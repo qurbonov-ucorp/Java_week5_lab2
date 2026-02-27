@@ -1,13 +1,40 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-void main() {
-    //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-    // to see how IntelliJ IDEA suggests fixing it.
-    IO.println(String.format("Hello and welcome!"));
+public class Main {
+    public static void main(String[] args) {
+        Flight myFlight = new Flight("UA254", "San Francisco", "12A", "G18");
+        System.out.println(myFlight);
+    }
+}
 
-    for (int i = 1; i <= 5; i++) {
-        //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-        // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-        IO.println("i = " + i);
+class BoardingPass {
+    private String seatNumber;
+    private String gate;
+
+    public BoardingPass(String seatNumber, String gate) {
+        this.seatNumber = seatNumber;
+        this.gate = gate;
+    }
+
+    @Override
+    public String toString() {
+        return "Seat: " + seatNumber + ", Gate: " + gate;
+    }
+}
+
+class Flight {
+    private String flightID;
+    private String destination;
+    private BoardingPass boardingPass;
+
+    public Flight(String flightID, String destination, String seat, String gate) {
+        this.flightID = flightID;
+        this.destination = destination;
+        this.boardingPass = new BoardingPass(seat, gate);
+    }
+
+    @Override
+    public String toString() {
+        return "Flight ID: " + flightID +
+                "\nDestination: " + destination +
+                "\n" + boardingPass.toString();
     }
 }
